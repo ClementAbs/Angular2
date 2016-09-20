@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style/bootstrap.min.css">
+	<link rel="stylesheet" href="style/todo.css">
+	<title>ToDo List Angularjs</title>
+</head>
+<body>
+	<div class="row-fluid" ng-app="todoApp">
+		<div class="jumbotron col-xs-8 colxs-offset-2">
+			<h2>ToDo</h2>
+			<div class="container-fluid" ng-controller="todoListController">
+				<span>{{ remaining() }} of {{todos.length}} remaining</span> [<a href="#" ng-click="archive()">archive</a>]
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="todo in todos">
+						<input type="checkbox" ng-model="todo.done">
+						<span class="done-{{ todo.done }}">{{ todo.text }}</span>
+					</li>
+				</ul>
+				<form>
+					<input type="text" placeholder="Add new toDo here" ng-model="formNewTodo">
+					<button class="btn btn-primary" ng-click="addTodo()" type="submit">Add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="js/angular.min.js"></script>
+	<script src="js/todo.js"></script>
+</body>
+</html>
